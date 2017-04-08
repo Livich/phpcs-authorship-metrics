@@ -1,0 +1,9 @@
+{    
+    "name": "livich/phpcs-extended-metrics",
+    "require": {
+        "squizlabs/php_codesniffer": "^2.8"
+    },
+    "autoload": {
+        "psr-0": {"Livich\\PHPCS\\ExtendedMetrics": "src/"}
+    }
+}
