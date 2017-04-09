@@ -12,10 +12,6 @@ class Authorship_Sniffs_Metrics_LatestSpacesAfterBracketSniff implements PHP_Cod
      * @var array Holds array like ([line number] => number of whitespaces,...)
      */
     private $lineSpaces = array();
-    /**
-     * @var null|integer Holds SLOC number
-     */
-    private $lineCount = null;
 
     /**
      * @var string Latest file name which was processed
@@ -46,15 +42,8 @@ class Authorship_Sniffs_Metrics_LatestSpacesAfterBracketSniff implements PHP_Cod
         $tokens = $phpcsFile->getTokens();
 
         if($this->latestFile !== $phpcsFile->getFilename()) {
-            $this->lineCount = null;
             $this->lineSpaces = array();
             $this->latestFile = $phpcsFile->getFilename();
-        }
-
-        // First of all, get SLOC number
-        if (!isset($this->lineCount)) {
-            $this->lineCount = $this->getLineCount($tokens);
-            $phpcsFile->addWarning($this->lineCount, null, 'sloc');
         }
 
         // Store current token and fetch by next tokens
@@ -92,26 +81,6 @@ class Authorship_Sniffs_Metrics_LatestSpacesAfterBracketSniff implements PHP_Cod
                 'spaces'
             );
         }
-    }
-
-    /**
-     * Get SLOC number for current file
-     * @param array $tokens PHPCS token array
-     * @return integer SLOC number
-     */
-    private function getLineCount($tokens) {
-        $result = array();
-        foreach($tokens as $token) {
-            // TODO: more token types to skip?
-            if(stristr($token['type'], 'T_DOC_')
-                || stristr($token['type'], 'T_OPEN_')
-                || stristr($token['type'], 'T_WHITESPACE')
-            ) {
-                continue;
-            }
-            $result[$token['line']] = 1;
-        }
-        return count($result);
     }
 
     /**

@@ -17,7 +17,9 @@ class TestCase extends PHPUnit_Framework_TestCase
     protected $phpcsParams;
     
     public function __construct(){
+        parent::__construct();
         global $rootDir;
+        exec($rootDir.'/setup.sh');
         $this->phpcsCli = new PHP_CodeSniffer_CLI();
         $this->phpcsParams = $this->phpcsCli ->getDefaults();
         $this->phpcsParams['standard'] = 'Authorship';
@@ -25,7 +27,7 @@ class TestCase extends PHPUnit_Framework_TestCase
             $rootDir.'/src/AuthorshipMetrics/Tests/assets/generic.php',
             $rootDir.'/src/AuthorshipMetrics/Tests/assets/bigger.php'
             );
-        $this->phpcsParams['reports'] = array('full'=>null);
+        $this->phpcsParams['reports'] = array('json'=>null);
     }
     public function phpcsStart()
     {
