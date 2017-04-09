@@ -1,5 +1,5 @@
 {    
-    "name": "livich/phpcs-extended-metrics",
+    "name": "livich/phpcs-authorship-metrics",
     "require": {
         "squizlabs/php_codesniffer": "^2.8"
     },
