@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Class Authorship_Sniffs_Metrics_LastBracesSniff
- *
+ * Class Authorship_Sniffs_Metrics_LatestSpacesAfterBracketSniff
+ * Implements metric which counts number of whitespaces at end of line
+ * after opening brace
  */
 class Authorship_Sniffs_Metrics_LatestSpacesAfterBracketSniff implements PHP_CodeSniffer_Sniff
 {
