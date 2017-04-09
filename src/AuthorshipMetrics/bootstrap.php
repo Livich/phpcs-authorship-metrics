@@ -1,6 +1,6 @@
 <?php
 
-$rootDir = realpath(dirname(__FILE__).'/../');
+$rootDir = realpath(dirname(__FILE__).'/../..');
 
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
