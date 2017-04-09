@@ -24,10 +24,10 @@ class TestCase extends PHPUnit_Framework_TestCase
         $this->phpcsParams = $this->phpcsCli ->getDefaults();
         $this->phpcsParams['standard'] = 'Authorship';
         $this->phpcsParams['files'] = array(
-            $rootDir.'/src/AuthorshipMetrics/Tests/assets/generic.php',
-            $rootDir.'/src/AuthorshipMetrics/Tests/assets/bigger.php'
+            $rootDir.'/src/AuthorshipMetrics/Tests/assets/braces.php',
+            $rootDir.'/src/AuthorshipMetrics/Tests/assets/comments.php'
             );
-        $this->phpcsParams['reports'] = array('json'=>null);
+        $this->phpcsParams['reports'] = array('xml'=>null);
     }
     public function phpcsStart()
     {
